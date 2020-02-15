@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NandoExpandableActionBar">
+        <attr name="title" format="string"/>
+        <attr name="titleEnabled" format="boolean"/>
+        <attr name="collapsedTitleGravity" />
+        <attr name="expandedTitleGravity" />
+        <attr name="expandedToolbarHeight" format="dimension"/>
+        <attr name="toolbarHeight" format="dimension"/>
+        <attr name="navigationIcon" format="reference"/>
+        <attr name="navigationImageContent" format="reference"/>
+    </declare-styleable>
+</resources>
