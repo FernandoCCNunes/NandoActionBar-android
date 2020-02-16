@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="NandoExpandableActionBar">
-        <attr name="title" format="string"/>
+        <attr name="title"/>
         <attr name="titleEnabled" format="boolean"/>
+        <attr name="titleTextColor" format="color"/>
+        <attr name="titleExpandedTextColor" format="color"/>
+        <attr name="titleCollapsedTextColor" format="color"/>
+        <attr name="titleTextAppearance" format="reference"/>
         <attr name="collapsedTitleGravity" />
         <attr name="expandedTitleGravity" />
+        <attr name="subtitle"/>
+        <attr name="subtitleTextColor" format="color"/>
+        <attr name="subtitleTextAppearance" format="reference"/>
         <attr name="expandedToolbarHeight" format="dimension"/>
         <attr name="toolbarHeight" format="dimension"/>
         <attr name="navigationIcon" format="reference"/>
-        <attr name="navigationImageContent" format="reference"/>
+        <attr name="navigationIconContent" format="reference"/>
+        <attr name="logo"/>
+        <attr name="menu" format="reference"/>
+        <attr name="contentScrim" format="color"/>
+        <attr name="scrimAnimationDuration" format="integer"/>
+        <attr name="scrimVisibleHeightTrigger" format="dimension"/>
     </declare-styleable>
 </resources>

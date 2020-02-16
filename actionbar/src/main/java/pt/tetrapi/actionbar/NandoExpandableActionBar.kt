@@ -3,11 +3,7 @@ package pt.tetrapi.actionbar
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.util.Log
-import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
+import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.children
@@ -19,11 +15,24 @@ class NandoExpandableActionBar: ConstraintLayout {
 
     var title: String? = null
     var titleEnabled: Boolean = true
+    var titleTextColor: Int? = null
+    var titleCollapsedTextColor: Int? = null
+    var titleExpandedTextColor: Int? = null
+    var titleTextAppearance: Int? = null
     var collapsedTitleGravity: Int? = null
     var expandedTitleGravity: Int? = null
+    var subtitle: String? = null
+    var subtitleTextColor: Int? = null
+    var subtitleTextAppearance: Int? = null
     var toolbarHeight: Int? = null
     var toolbarExpandedHeight: Int? = null
     var navigationIcon: Int? = null
+    var navigationIconContent: Int? = null
+    var logo: Int? = null
+    var menu: Int? = null
+    var contentScrim: Int? = null
+    var scrimAnimationDuration: Int? = null
+    var scrimVisibleHeightTrigger: Int? = null
 
     constructor(context: Context) : super(context) {
         inflateLayout()
@@ -52,9 +61,39 @@ class NandoExpandableActionBar: ConstraintLayout {
     override fun onFinishInflate() {
         super.onFinishInflate()
 
-        Log.d("Log", "Title 1-> $title")
         collapsing_toolbar_layout_nando_expandable_actionbar.isTitleEnabled = titleEnabled
-        material_toolbar_nando_expandable_actionbar.title = title
+
+        if (title != null) {
+            material_toolbar_nando_expandable_actionbar.title = title
+        }
+
+        if (titleTextColor != null) {
+            material_toolbar_nando_expandable_actionbar.setTitleTextColor(titleTextColor!!)
+        }
+
+        if (titleCollapsedTextColor != null) {
+            collapsing_toolbar_layout_nando_expandable_actionbar.setCollapsedTitleTextColor(titleCollapsedTextColor!!)
+        }
+
+        if (titleExpandedTextColor != null) {
+            collapsing_toolbar_layout_nando_expandable_actionbar.setExpandedTitleColor(titleExpandedTextColor!!)
+        }
+
+        if (titleTextAppearance != null) {
+            material_toolbar_nando_expandable_actionbar.setTitleTextAppearance(context, titleTextAppearance!!)
+        }
+
+        if (subtitle != null) {
+            material_toolbar_nando_expandable_actionbar.subtitle = subtitle
+        }
+
+        if (subtitleTextColor != null) {
+            material_toolbar_nando_expandable_actionbar.setSubtitleTextColor(subtitleTextColor!!)
+        }
+
+        if (subtitleTextAppearance != null) {
+            material_toolbar_nando_expandable_actionbar.setSubtitleTextAppearance(context, subtitleTextAppearance!!)
+        }
 
         if (collapsedTitleGravity != null) {
             collapsing_toolbar_layout_nando_expandable_actionbar.collapsedTitleGravity = collapsedTitleGravity!!
@@ -77,6 +116,30 @@ class NandoExpandableActionBar: ConstraintLayout {
 
         if (navigationIcon != null) {
             material_toolbar_nando_expandable_actionbar.setNavigationIcon(navigationIcon!!)
+        }
+
+        if (navigationIconContent != null) {
+            material_toolbar_nando_expandable_actionbar.setNavigationContentDescription(navigationIconContent!!)
+        }
+
+        if (logo != null) {
+            material_toolbar_nando_expandable_actionbar.setLogo(logo!!)
+        }
+
+        if (menu != null) {
+            material_toolbar_nando_expandable_actionbar.inflateMenu(menu!!)
+        }
+
+        if (contentScrim != null) {
+            collapsing_toolbar_layout_nando_expandable_actionbar.setContentScrimColor(contentScrim!!)
+        }
+
+        if (scrimAnimationDuration != null) {
+            collapsing_toolbar_layout_nando_expandable_actionbar.scrimAnimationDuration = scrimAnimationDuration!!.toLong()
+        }
+
+        if (scrimVisibleHeightTrigger != null) {
+            collapsing_toolbar_layout_nando_expandable_actionbar.scrimVisibleHeightTrigger = scrimVisibleHeightTrigger!!
         }
 
         for ((index, child) in children.withIndex()) {
@@ -114,6 +177,18 @@ class NandoExpandableActionBar: ConstraintLayout {
             titleEnabled = typedArray.getBoolean(R.styleable.NandoExpandableActionBar_titleEnabled, true)
         }
 
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_titleTextColor)) {
+            titleTextColor = typedArray.getColor(R.styleable.NandoExpandableActionBar_titleTextColor, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_titleCollapsedTextColor)) {
+            titleCollapsedTextColor = typedArray.getColor(R.styleable.NandoExpandableActionBar_titleCollapsedTextColor, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_titleExpandedTextColor)) {
+            titleExpandedTextColor = typedArray.getColor(R.styleable.NandoExpandableActionBar_titleExpandedTextColor, 0)
+        }
+
         if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_collapsedTitleGravity)) {
             collapsedTitleGravity = typedArray.getInteger(R.styleable.NandoExpandableActionBar_collapsedTitleGravity, 0)
         }
@@ -122,14 +197,24 @@ class NandoExpandableActionBar: ConstraintLayout {
             expandedTitleGravity = typedArray.getInteger(R.styleable.NandoExpandableActionBar_expandedTitleGravity, 0)
         }
 
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_subtitle)) {
+            subtitle = typedArray.getString(R.styleable.NandoExpandableActionBar_subtitle)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_subtitleTextColor)) {
+            subtitleTextColor = typedArray.getInteger(R.styleable.NandoExpandableActionBar_subtitleTextColor, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_subtitleTextAppearance)) {
+            subtitleTextAppearance = typedArray.getInteger(R.styleable.NandoExpandableActionBar_subtitleTextAppearance, 0)
+        }
+
         if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_toolbarHeight)) {
             toolbarHeight = typedArray.getDimension(R.styleable.NandoExpandableActionBar_toolbarHeight, 0f).toInt()
         }
 
         if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_expandedToolbarHeight)) {
             toolbarExpandedHeight = typedArray.getDimension(R.styleable.NandoExpandableActionBar_expandedToolbarHeight, 0f).toInt()
-        } else {
-            throw RuntimeException("'expandedToolbarHeight' attribute should be defined")
         }
 
         if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_toolbarHeight)) {
@@ -137,7 +222,31 @@ class NandoExpandableActionBar: ConstraintLayout {
         }
 
         if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_navigationIcon)) {
-            navigationIcon = typedArray.getResourceId(R.styleable.NandoExpandableActionBar_navigationIcon, -0)
+            navigationIcon = typedArray.getResourceId(R.styleable.NandoExpandableActionBar_navigationIcon, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_navigationIconContent)) {
+            navigationIconContent = typedArray.getResourceId(R.styleable.NandoExpandableActionBar_navigationIconContent, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_logo)) {
+            logo = typedArray.getResourceId(R.styleable.NandoExpandableActionBar_logo, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_menu)) {
+            menu = typedArray.getResourceId(R.styleable.NandoExpandableActionBar_menu, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_contentScrim)) {
+            contentScrim = typedArray.getColor(R.styleable.NandoExpandableActionBar_contentScrim, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_scrimAnimationDuration)) {
+            scrimAnimationDuration = typedArray.getColor(R.styleable.NandoExpandableActionBar_scrimAnimationDuration, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_scrimVisibleHeightTrigger)) {
+            scrimVisibleHeightTrigger = typedArray.getDimension(R.styleable.NandoExpandableActionBar_scrimVisibleHeightTrigger, 0f).toInt()
         }
     }
 }

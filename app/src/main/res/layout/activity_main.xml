@@ -8,9 +8,23 @@
     tools:context=".MainActivity"
     app:title="@string/app_name"
     app:titleEnabled="true"
-    app:expandedToolbarHeight="150dp"
+    app:titleTextColor="@android:color/holo_red_dark"
+    app:titleCollapsedTextColor="@android:color/holo_red_light"
+    app:titleExpandedTextColor="@android:color/holo_red_dark"
+    app:logo="@mipmap/ic_launcher"
     app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+    app:menu="@menu/menu"
+    app:contentScrim="@android:color/holo_red_dark"
+    app:scrimAnimationDuration="@android:integer/config_shortAnimTime"
+    app:scrimVisibleHeightTrigger="200dp"
     >
+
+    <!--app:title="@string/app_name"
+    app:titleTextColor="@android:color/holo_red_dark"
+    app:titleEnabled="false"
+
+
+     -->
 
     <TextView
         android:layout_width="wrap_content"

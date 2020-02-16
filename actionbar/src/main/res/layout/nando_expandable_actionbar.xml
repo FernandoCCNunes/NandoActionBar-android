@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollInterpolator="@android:anim/accelerate_decelerate_interpolator"
             >
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -23,7 +24,6 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 />
-
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
