@@ -21,5 +21,9 @@
         <attr name="contentScrim" format="color"/>
         <attr name="scrimAnimationDuration" format="integer"/>
         <attr name="scrimVisibleHeightTrigger" format="dimension"/>
+        <attr name="toolbarBackground" format="reference"/>
+        <attr name="toolbarBackgroundColor" format="color"/>
+        <attr name="extendedToolbarBackground" format="reference"/>
+        <attr name="extendedToolbarBackgroundColor" format="color"/>
     </declare-styleable>
 </resources>

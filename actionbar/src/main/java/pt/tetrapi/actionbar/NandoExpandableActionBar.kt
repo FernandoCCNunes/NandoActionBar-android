@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import androidx.annotation.Dimension
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.res.getBooleanOrThrow
 import androidx.core.view.children
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import kotlinx.android.synthetic.main.nando_expandable_actionbar.view.*
@@ -33,6 +34,10 @@ class NandoExpandableActionBar: ConstraintLayout {
     var contentScrim: Int? = null
     var scrimAnimationDuration: Int? = null
     var scrimVisibleHeightTrigger: Int? = null
+    var toolbarBackground: Int? = null
+    var toolbarBackgroundColor: Int? = null
+    var extendedToolbarBackground: Int? = null
+    var extendedToolbarBackgroundColor: Int? = null
 
     constructor(context: Context) : super(context) {
         inflateLayout()
@@ -142,6 +147,22 @@ class NandoExpandableActionBar: ConstraintLayout {
             collapsing_toolbar_layout_nando_expandable_actionbar.scrimVisibleHeightTrigger = scrimVisibleHeightTrigger!!
         }
 
+        if (toolbarBackground != null) {
+            material_toolbar_nando_expandable_actionbar.setBackgroundResource(toolbarBackground!!)
+        }
+
+        if (toolbarBackgroundColor != null) {
+            material_toolbar_nando_expandable_actionbar.setBackgroundColor(toolbarBackgroundColor!!)
+        }
+
+        if (extendedToolbarBackground != null) {
+            collapsing_toolbar_layout_nando_expandable_actionbar.setBackgroundResource(extendedToolbarBackground!!)
+        }
+
+        if (extendedToolbarBackgroundColor != null) {
+            material_toolbar_nando_expandable_actionbar.setBackgroundColor(extendedToolbarBackgroundColor!!)
+        }
+
         for ((index, child) in children.withIndex()) {
             if (index != 0) {
                 removeViewAt(index)
@@ -247,6 +268,22 @@ class NandoExpandableActionBar: ConstraintLayout {
 
         if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_scrimVisibleHeightTrigger)) {
             scrimVisibleHeightTrigger = typedArray.getDimension(R.styleable.NandoExpandableActionBar_scrimVisibleHeightTrigger, 0f).toInt()
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_toolbarBackground)) {
+            toolbarBackground = typedArray.getResourceId(R.styleable.NandoExpandableActionBar_toolbarBackground, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_toolbarBackgroundColor)) {
+            toolbarBackgroundColor = typedArray.getColor(R.styleable.NandoExpandableActionBar_toolbarBackgroundColor, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_extendedToolbarBackground)) {
+            extendedToolbarBackground = typedArray.getResourceId(R.styleable.NandoExpandableActionBar_extendedToolbarBackground, 0)
+        }
+
+        if (typedArray.hasValue(R.styleable.NandoExpandableActionBar_extendedToolbarBackgroundColor)) {
+            extendedToolbarBackgroundColor = typedArray.getColor(R.styleable.NandoExpandableActionBar_extendedToolbarBackgroundColor, 0)
         }
     }
 }

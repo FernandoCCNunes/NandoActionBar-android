@@ -8,29 +8,19 @@
     tools:context=".MainActivity"
     app:title="@string/app_name"
     app:titleEnabled="true"
-    app:titleTextColor="@android:color/holo_red_dark"
-    app:titleCollapsedTextColor="@android:color/holo_red_light"
-    app:titleExpandedTextColor="@android:color/holo_red_dark"
-    app:logo="@mipmap/ic_launcher"
     app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
     app:menu="@menu/menu"
-    app:contentScrim="@android:color/holo_red_dark"
+    android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
+    app:contentScrim="@color/design_default_color_primary_dark"
     app:scrimAnimationDuration="@android:integer/config_shortAnimTime"
-    app:scrimVisibleHeightTrigger="200dp"
     >
-
-    <!--app:title="@string/app_name"
-    app:titleTextColor="@android:color/holo_red_dark"
-    app:titleEnabled="false"
-
-
-     -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola Ola"
         android:textSize="58sp"
+        android:textColor="@android:color/black"
         />
 
 </pt.tetrapi.actionbar.NandoExpandableActionBar>
